@@ -1,0 +1,16 @@
+PODS:
+  - NativeNetwoking (0.1.0)
+
+DEPENDENCIES:
+  - NativeNetwoking (from `../`)
+
+EXTERNAL SOURCES:
+  NativeNetwoking:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  NativeNetwoking: 4fb4ebe4c61186d4fa7af029dc277c4f36b24413
+
+PODFILE CHECKSUM: 7ba074abb7313355d106f1aeb9fb3745fc9ed278
+
+COCOAPODS: 1.11.3

@@ -1,0 +1,22 @@
+{
+  "name": "NativeNetwoking",
+  "version": "0.1.0",
+  "summary": "A short description of NativeNetwoking.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/20514535/NativeNetwoking",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "20514535": "abdulmomen130@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/20514535/NativeNetwoking.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "NativeNetwoking/Classes/**/*"
+}

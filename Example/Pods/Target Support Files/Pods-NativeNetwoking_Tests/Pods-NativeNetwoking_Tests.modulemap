@@ -1,0 +1,6 @@
+framework module Pods_NativeNetwoking_Tests {
+  umbrella header "Pods-NativeNetwoking_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
