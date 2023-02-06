@@ -15,7 +15,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		C40573E78308C32B7F314ADB /* Pods_NativeNetwoking_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8550E9CBB9511F70A0D4E68 /* Pods_NativeNetwoking_Example.framework */; };
-		CC36F3182990C85D00E9B892 /* TestAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC36F3172990C85D00E9B892 /* TestAPIClient.swift */; };
+		CC36F3182990C85D00E9B892 /* PostsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC36F3172990C85D00E9B892 /* PostsAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,7 @@
 		7D8992BCA35C62D60CCCE164 /* NativeNetwoking.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NativeNetwoking.podspec; path = ../NativeNetwoking.podspec; sourceTree = "<group>"; };
 		8E91470C5FBBB2627160A410 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B707A924BE560436AB37A002 /* Pods-NativeNetwoking_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativeNetwoking_Tests.release.xcconfig"; path = "Target Support Files/Pods-NativeNetwoking_Tests/Pods-NativeNetwoking_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		CC36F3172990C85D00E9B892 /* TestAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAPIClient.swift; sourceTree = "<group>"; };
+		CC36F3172990C85D00E9B892 /* PostsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsAPIClient.swift; sourceTree = "<group>"; };
 		F8550E9CBB9511F70A0D4E68 /* Pods_NativeNetwoking_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NativeNetwoking_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,7 +97,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				CC36F3172990C85D00E9B892 /* TestAPIClient.swift */,
+				CC36F3172990C85D00E9B892 /* PostsAPIClient.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -338,7 +338,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				CC36F3182990C85D00E9B892 /* TestAPIClient.swift in Sources */,
+				CC36F3182990C85D00E9B892 /* PostsAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

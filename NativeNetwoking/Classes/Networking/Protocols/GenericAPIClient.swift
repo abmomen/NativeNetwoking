@@ -22,30 +22,44 @@ public extension GenericAPIClient {
         
         URLSession.shared.dataTask(with: endPoint.request) { data, response, error in
             if let error = error {
-                completion(.failure(.defaultError(error)))
+                DispatchQueue.main.async {
+                    completion(.failure(.defaultError(error)))
+                }
                 return
             }
             
             if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
-                completion(.failure(.serverError(response.statusCode)))
+                DispatchQueue.main.async {
+                    completion(.failure(.serverError(response.statusCode)))
+                }
                 return
             }
             
             
             guard let data = data else {
-                completion(.failure(.invalidResponse))
+                DispatchQueue.main.async {
+                    completion(.failure(.invalidResponse))
+                }
+                
                 return
             }
             
             do {
                 let decodedData = try decoder.decode(T.self, from: data)
-                completion(.success(decodedData))
+                DispatchQueue.main.async {
+                    completion(.success(decodedData))
+                }
                 
             } catch {
                 if let errorData = try? decoder.decode(CustomErrorModel.self, from: data) {
-                    completion(.failure(.customError(errorData)))
+                    DispatchQueue.main.async {
+                        completion(.failure(.customError(errorData)))
+                    }
+                    
                 } else {
-                    completion(.failure(.decodingError))
+                    DispatchQueue.main.async {
+                        completion(.failure(.decodingError))
+                    }
                 }
             }
         }

@@ -14,14 +14,14 @@ public enum NetworkError<T: ErrorProtocol>: Error {
     case defaultError(Error)
     case customError(T)
     
-    var description: String {
+    public var description: String {
         switch self {
             
         case .invalidResponse:
             return "There is no data in the response."
             
         case .serverError(let code):
-            return "Error from server with status code \(code)"
+            return "Unsuccessful status code \(code)"
             
         case .decodingError:
             return "Could not decode response"
