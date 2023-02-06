@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
     case get    = "GET"
     case post   = "POST"
     case put    = "PUT"
@@ -15,4 +15,4 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
-typealias Parameters = [String: Any]
+public typealias Parameters = [String: Any]

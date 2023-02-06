@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol EndPoint {
+public protocol EndPoint {
     var baseUrl: String { get }
     var path: String { get }
     var body: Data? { get }
@@ -18,10 +18,6 @@ protocol EndPoint {
 }
 
 extension EndPoint {
-    var baseUrl: String {
-        return Constants.baseUrl
-    }
-    
     var body: Data? {
         return nil
     }
@@ -43,17 +39,62 @@ extension EndPoint {
     }
     
     var request: URLRequest {
-        let url = URL(string: "\(baseUrl)\(path)")!
-        var request = URLRequest(url: url, timeoutInterval: 120)
-        URLEncoding.encode(&request, with: parameters)
-        request.httpBody = body
+        var urlComponents = URLComponents(string: baseUrl + path)!
+        
+        var encodedBodyData: Data?
+        
+        if let parameters {
+            if method == .get {
+                if let items = paramsToQueryItems(parameters) {
+                    urlComponents.queryItems = items
+                }
+            } else {
+                encodedBodyData = try? JSONSerialization.data(withJSONObject: parameters)
+            }
+        } else {
+            encodedBodyData = body
+        }
+        
+        var request = URLRequest(url: urlComponents.url!, timeoutInterval: 120)
+        request.httpBody = encodedBodyData
         request.httpMethod = method.rawValue
-        addHeader(&request)
-        return request
-    }
-    
-    fileprivate func addHeader(_ request: inout URLRequest) {
         request.setValue(authentication, forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
+}
+
+extension EndPoint {
+    private func queryItems(_ key: String, _ value: Any?) -> [URLQueryItem] {
+        var result = [] as [URLQueryItem]
+        
+        if let dictionary = value as? [String: AnyObject] {
+            for (nestedKey, value) in dictionary {
+                result += queryItems("\(key)[\(nestedKey)]", value)
+            }
+        } else if let array = value as? [AnyObject] {
+            let arrKey = key
+            for value in array {
+                result += queryItems(arrKey, value)
+            }
+        } else if let value = value {
+            result.append(URLQueryItem(name: key, value: "\(value)"))
+        } else {
+            result.append(URLQueryItem(name: key, value: nil))
+        }
+        
+        return result
+    }
+    
+    func paramsToQueryItems(_ params: [String: Any]?) -> [URLQueryItem]? {
+        guard let params = params else { return nil }
+        
+        var result = [] as [URLQueryItem]
+        
+        for (key, value) in params {
+            result += queryItems(key, value)
+        }
+        
+        return result
     }
 }

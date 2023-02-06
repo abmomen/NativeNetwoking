@@ -1,5 +1,5 @@
 PODS:
-  - NativeNetwoking (0.1.0)
+  - NativeNetwoking (1.0.0)
 
 DEPENDENCIES:
   - NativeNetwoking (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  NativeNetwoking: 4fb4ebe4c61186d4fa7af029dc277c4f36b24413
+  NativeNetwoking: 9d7feab74e0a30400ceb33e94c1b212243c29918
 
 PODFILE CHECKSUM: 7ba074abb7313355d106f1aeb9fb3745fc9ed278
 

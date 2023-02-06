@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol GenericAPIClient {
+public protocol GenericAPIClient {
     static func startRequest<T: Decodable>(with endPoint: EndPoint,
                                            decoder: JSONDecoder,
                                            completion: @escaping (Result<T, NetworkError>) -> Void)
