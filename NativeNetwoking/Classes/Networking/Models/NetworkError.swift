@@ -7,12 +7,12 @@
 
 import Foundation
 
-public enum NetworkError: Error {
+public enum NetworkError<T: ErrorProtocol>: Error {
     case invalidJSON
     case invalidResponse
     case decodingError
-    case genericError(Error)
-    case backendError(ErrorResponseModel)
+    case defaultError(Error)
+    case backendError(T)
     
     var description: String {
         switch self {
@@ -22,7 +22,7 @@ public enum NetworkError: Error {
             return "Invalid Response"
         case .decodingError:
             return "Could not decode response"
-        case .genericError(let error):
+        case .defaultError(let error):
             return error.localizedDescription
         case .backendError(let error):
             return error.message ?? "Unknown error occured"

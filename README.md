@@ -22,7 +22,7 @@ pod 'NativeNetwoking'
 
 ## Author
 
-20514535, abdulmomen130@gmail.com
+abmomen, abdulmomen130@gmail.com
 
 ## License
 
