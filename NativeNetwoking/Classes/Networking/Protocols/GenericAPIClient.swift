@@ -7,16 +7,18 @@
 
 import Foundation
 
+public typealias ErrorModel = NetworkError<CustomErrorModel>
+
 public protocol GenericAPIClient {
     static func startRequest<T: Decodable>(with endPoint: EndPoint,
                                            decoder: JSONDecoder,
-                                           completion: @escaping (Result<T, NetworkError<CustomErrorModel>>) -> Void)
+                                           completion: @escaping (Result<T, ErrorModel>) -> Void)
 }
 
 public extension GenericAPIClient {
     static func startRequest<T: Decodable>(with endPoint: EndPoint,
                                            decoder: JSONDecoder = JSONDecoder(),
-                                           completion: @escaping (Result<T, NetworkError<CustomErrorModel>>) -> Void) {
+                                           completion: @escaping (Result<T, ErrorModel>) -> Void) {
         
         URLSession.shared.dataTask(with: endPoint.request) { data, response, error in
             if let error = error {
@@ -25,13 +27,13 @@ public extension GenericAPIClient {
             }
             
             if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
-                completion(.failure(.invalidResponse))
+                completion(.failure(.serverError(response.statusCode)))
                 return
             }
             
             
             guard let data = data else {
-                completion(.failure(.invalidJSON))
+                completion(.failure(.invalidResponse))
                 return
             }
             

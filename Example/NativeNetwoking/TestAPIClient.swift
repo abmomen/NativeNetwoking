@@ -19,7 +19,7 @@ private struct TestEndPoint: EndPoint {
 }
 
 struct TestAPIClient: GenericAPIClient {
-    static func fetchData(completion: @escaping (Result<String, NetworkError<CustomErrorModel>>) -> Void) {
+    static func fetchData(completion: @escaping (Result<String, ErrorModel>) -> Void) {
         startRequest(with: TestEndPoint(), completion: completion)
     }
 }
