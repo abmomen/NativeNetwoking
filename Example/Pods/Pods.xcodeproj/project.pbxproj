@@ -15,7 +15,7 @@
 		656AC731F69B886C8B49B822F7DB06DB /* GenericAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BECA10FEDC4A4713100CD42D3E685D /* GenericAPIClient.swift */; };
 		70D0A3952FFD783E24674A0D9B7EA25E /* NativeNetwoking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2CF5595C6DF4DDC212F814F0255C60 /* NativeNetwoking-dummy.m */; };
 		981EC089A4DE58B20147B08C0EF3EBAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		A56A59742917BE9E9143891A9C78AAC7 /* ErrorResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0100FFF6133399CAA9E17BDA0FA926F /* ErrorResponseModel.swift */; };
+		A56A59742917BE9E9143891A9C78AAC7 /* ErrorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0100FFF6133399CAA9E17BDA0FA926F /* ErrorProtocol.swift */; };
 		B431F1D0BDEEFA62AAE0F8A338B16DF8 /* Pods-NativeNetwoking_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A3091FDC8A347AB8FEBC1B041CBD6DFA /* Pods-NativeNetwoking_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0774163CF4D819A337FA11194FB8BDF /* NativeNetwoking-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B2D906E3A036A5D6ED6CD64A37963FB /* NativeNetwoking-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E138D2E1D63D39BF851ED609ACAADFB6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD5534376DBC29C26C1E0017A07F419 /* NetworkError.swift */; };
@@ -76,7 +76,7 @@
 		E53F7336407B45C91FE6D591D5A8B03E /* EndPoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		E801B8FB77A279B5927FC61842CAFD31 /* HTTPMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		ECD5534376DBC29C26C1E0017A07F419 /* NetworkError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		F0100FFF6133399CAA9E17BDA0FA926F /* ErrorResponseModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorResponseModel.swift; sourceTree = "<group>"; };
+		F0100FFF6133399CAA9E17BDA0FA926F /* ErrorProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorProtocol.swift; sourceTree = "<group>"; };
 		F089B49422C48C4776B4C86179878782 /* Pods-NativeNetwoking_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NativeNetwoking_Tests-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,7 +245,7 @@
 		FE932F057E8FC06F09749E9A545252DF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F0100FFF6133399CAA9E17BDA0FA926F /* ErrorResponseModel.swift */,
+				F0100FFF6133399CAA9E17BDA0FA926F /* ErrorProtocol.swift */,
 				E801B8FB77A279B5927FC61842CAFD31 /* HTTPMethod.swift */,
 				ECD5534376DBC29C26C1E0017A07F419 /* NetworkError.swift */,
 			);
@@ -398,7 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DAD7B35C2DA30BF94C8A3EAD3C82831 /* EndPoint.swift in Sources */,
-				A56A59742917BE9E9143891A9C78AAC7 /* ErrorResponseModel.swift in Sources */,
+				A56A59742917BE9E9143891A9C78AAC7 /* ErrorProtocol.swift in Sources */,
 				656AC731F69B886C8B49B822F7DB06DB /* GenericAPIClient.swift in Sources */,
 				FB1BB99A2A5EC9BAF2876218D5E54838 /* HTTPMethod.swift in Sources */,
 				70D0A3952FFD783E24674A0D9B7EA25E /* NativeNetwoking-dummy.m in Sources */,

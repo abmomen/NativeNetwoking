@@ -18,27 +18,27 @@ public protocol EndPoint {
 }
 
 extension EndPoint {
-    var body: Data? {
+    public var body: Data? {
         return nil
     }
     
-    var method: HTTPMethod {
+    public var method: HTTPMethod {
         return .get
     }
     
-    var headers: [String: String]? {
+    public var headers: [String: String]? {
         return [:]
     }
     
-    var parameters: [String: Any]? {
+    public var parameters: [String: Any]? {
         return [:]
     }
     
-    var authentication: String? {
+    public var authentication: String? {
         return nil
     }
     
-    var request: URLRequest {
+    public var request: URLRequest {
         var urlComponents = URLComponents(string: baseUrl + path)!
         
         var encodedBodyData: Data?
@@ -86,7 +86,7 @@ extension EndPoint {
         return result
     }
     
-    func paramsToQueryItems(_ params: [String: Any]?) -> [URLQueryItem]? {
+    private func paramsToQueryItems(_ params: [String: Any]?) -> [URLQueryItem]? {
         guard let params = params else { return nil }
         
         var result = [] as [URLQueryItem]

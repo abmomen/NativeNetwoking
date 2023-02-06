@@ -8,17 +8,17 @@
 import Foundation
 
 public protocol GenericAPIClient {
-    func startRequest<T: Decodable, E: ErrorProtocol>(with endPoint: EndPoint,
+    static func startRequest<T: Decodable>(with endPoint: EndPoint,
                                            decoder: JSONDecoder,
-                                           completion: @escaping (Result<T, NetworkError<E>>) -> Void)
+                                           completion: @escaping (Result<T, NetworkError<CustomErrorModel>>) -> Void)
 }
 
-extension GenericAPIClient {
-    func startRequest<T: Decodable>(with endPoint: EndPoint,
+public extension GenericAPIClient {
+    static func startRequest<T: Decodable>(with endPoint: EndPoint,
                                            decoder: JSONDecoder = JSONDecoder(),
-                                           completion: @escaping (Result<T, NetworkError<ErrorResponseModel>>) -> Void) {
-        let session = URLSession.shared
-        session.dataTask(with: endPoint.request) { data, response, error in
+                                           completion: @escaping (Result<T, NetworkError<CustomErrorModel>>) -> Void) {
+        
+        URLSession.shared.dataTask(with: endPoint.request) { data, response, error in
             if let error = error {
                 completion(.failure(.defaultError(error)))
                 return
@@ -40,8 +40,8 @@ extension GenericAPIClient {
                 completion(.success(decodedData))
                 
             } catch {
-                if let errorData = try? decoder.decode(ErrorResponseModel.self, from: data) {
-                    completion(.failure(.backendError(errorData)))
+                if let errorData = try? decoder.decode(CustomErrorModel.self, from: data) {
+                    completion(.failure(.customError(errorData)))
                 } else {
                     completion(.failure(.decodingError))
                 }

@@ -12,7 +12,7 @@ public enum NetworkError<T: ErrorProtocol>: Error {
     case invalidResponse
     case decodingError
     case defaultError(Error)
-    case backendError(T)
+    case customError(T)
     
     var description: String {
         switch self {
@@ -24,8 +24,8 @@ public enum NetworkError<T: ErrorProtocol>: Error {
             return "Could not decode response"
         case .defaultError(let error):
             return error.localizedDescription
-        case .backendError(let error):
-            return error.message ?? "Unknown error occured"
+        case .customError(let error):
+            return error.message ?? "Unknown error occurred"
         }
     }
 }
