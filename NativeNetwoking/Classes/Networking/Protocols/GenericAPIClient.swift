@@ -28,14 +28,6 @@ public extension GenericAPIClient {
                 return
             }
             
-            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
-                DispatchQueue.main.async {
-                    completion(.failure(.serverError(response.statusCode)))
-                }
-                return
-            }
-            
-            
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(.failure(.invalidResponse))
@@ -44,22 +36,33 @@ public extension GenericAPIClient {
                 return
             }
             
+            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
+                
+                do {
+                    let errorData = try decoder.decode(CustomErrorModel.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(.failure(.customError(errorData)))
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(.failure(.serverError(response.statusCode)))
+                    }
+                }
+                
+                return
+            }
+            
             do {
+                
                 let decodedData = try decoder.decode(T.self, from: data)
+                
                 DispatchQueue.main.async {
                     completion(.success(decodedData))
                 }
                 
             } catch {
-                if let errorData = try? decoder.decode(CustomErrorModel.self, from: data) {
-                    DispatchQueue.main.async {
-                        completion(.failure(.customError(errorData)))
-                    }
-                    
-                } else {
-                    DispatchQueue.main.async {
-                        completion(.failure(.decodingError))
-                    }
+                DispatchQueue.main.async {
+                    completion(.failure(.decodingError(error)))
                 }
             }
         }

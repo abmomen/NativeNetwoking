@@ -10,7 +10,7 @@ import Foundation
 public enum NetworkError<T: ErrorProtocol>: Error {
     case invalidResponse
     case serverError(_ statusCode: Int)
-    case decodingError
+    case decodingError(Error)
     case defaultError(Error)
     case customError(T)
     
@@ -18,19 +18,19 @@ public enum NetworkError<T: ErrorProtocol>: Error {
         switch self {
             
         case .invalidResponse:
-            return "There is no data in the response."
+            return "Empty Response."
             
         case .serverError(let code):
-            return "Unsuccessful status code \(code)"
+            return "Unsuccessful Status Code \(code)"
             
-        case .decodingError:
-            return "Could not decode response"
+        case .decodingError(let error):
+            return "Decoding Failed Error: \(error)"
             
         case .defaultError(let error):
             return error.localizedDescription
             
         case .customError(let error):
-            return error.message ?? "Unknown error occurred"
+            return error.message ?? "Unknown Error"
         }
     }
 }
