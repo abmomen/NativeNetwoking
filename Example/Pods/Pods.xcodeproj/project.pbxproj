@@ -57,7 +57,7 @@
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7CB2767C4ABB63CFD21088C638DC7BBA /* NativeNetwoking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NativeNetwoking-prefix.pch"; sourceTree = "<group>"; };
 		7FF2FF8CDF38341C51C3138694E4F1F9 /* Pods-NativeNetwoking_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-NativeNetwoking_Example"; path = Pods_NativeNetwoking_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D401E4203C3B2A084CF87571BFCFAB8 /* NativeNetwoking */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NativeNetwoking; path = NativeNetwoking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D401E4203C3B2A084CF87571BFCFAB8 /* NativeNetwoking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NativeNetwoking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90DD70FF4BA8369F52871A60C9B854A3 /* Pods-NativeNetwoking_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NativeNetwoking_Tests-Info.plist"; sourceTree = "<group>"; };
 		9218C1BB1AA984E1A73458ECDAED442E /* Pods-NativeNetwoking_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NativeNetwoking_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -168,7 +168,7 @@
 		8C0BC9572BE98BD6CA42B2E6EEB46366 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D401E4203C3B2A084CF87571BFCFAB8 /* NativeNetwoking */,
+				8D401E4203C3B2A084CF87571BFCFAB8 /* NativeNetwoking.framework */,
 				7FF2FF8CDF38341C51C3138694E4F1F9 /* Pods-NativeNetwoking_Example */,
 				480E74400454E1F8DBD3344F9727D98B /* Pods-NativeNetwoking_Tests */,
 			);
@@ -336,7 +336,7 @@
 			);
 			name = NativeNetwoking;
 			productName = NativeNetwoking;
-			productReference = 8D401E4203C3B2A084CF87571BFCFAB8 /* NativeNetwoking */;
+			productReference = 8D401E4203C3B2A084CF87571BFCFAB8 /* NativeNetwoking.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -450,14 +450,16 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/NativeNetwoking/NativeNetwoking-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/NativeNetwoking/NativeNetwoking-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "Target Support Files/NativeNetwoking/NativeNetwoking.modulemap";
 				PRODUCT_MODULE_NAME = NativeNetwoking;
 				PRODUCT_NAME = NativeNetwoking;
@@ -466,9 +468,11 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
@@ -743,14 +747,16 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DRIVERKIT_DEPLOYMENT_TARGET = 19.0;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/NativeNetwoking/NativeNetwoking-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/NativeNetwoking/NativeNetwoking-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "Target Support Files/NativeNetwoking/NativeNetwoking.modulemap";
 				PRODUCT_MODULE_NAME = NativeNetwoking;
 				PRODUCT_NAME = NativeNetwoking;
@@ -759,8 +765,10 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};

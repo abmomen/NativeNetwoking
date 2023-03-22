@@ -9,12 +9,12 @@ import Foundation
 
 public typealias ErrorModel = NetworkError<CustomErrorModel>
 
-protocol GenericAPIClient {
+public protocol GenericAPIClient {
     static func startRequest<T: Decodable>(with endPoint: EndPoint, decoder: JSONDecoder,
                                            completion: @escaping (Result<T, ErrorModel>) -> Void)
 }
 
-extension GenericAPIClient {
+public extension GenericAPIClient {
     static func startRequest<T: Decodable>(with endPoint: EndPoint, decoder: JSONDecoder = JSONDecoder(),
                                            completion: @escaping (Result<T, ErrorModel>) -> Void) {
         

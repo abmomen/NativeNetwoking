@@ -51,11 +51,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 struct Post: Codable {
-    let userID, ids: Int
+    let userId, id: Int
     let title, body: String
-
-    enum CodingKeys: String, CodingKey {
-        case userID = "userId"
-        case ids, title, body
-    }
 }

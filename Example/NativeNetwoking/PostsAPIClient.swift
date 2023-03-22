@@ -18,8 +18,8 @@ private struct PostsEndPoint: EndPoint {
     }
 }
 
-struct PostsAPIClient: GenericAPIClient {
-    static func fetchPosts(completion: @escaping (Result<[Post]?, DefaultErrorModel>) -> Void) {
+struct PostsAPIClient: GenericAPIClient {    
+    static func fetchPosts(completion: @escaping (Result<[Post]?, ErrorModel>) -> Void) {
         startRequest(with: PostsEndPoint(), completion: completion)
     }
 }
