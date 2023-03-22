@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'NativeNetwoking'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'A Library for native networking with url session'
 
   s.homepage         = 'https://github.com/abmomen/NativeNetwoking'
