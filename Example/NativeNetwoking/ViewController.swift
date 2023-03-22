@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         PostsAPIClient.fetchPosts {[weak self] result in
             switch result {
             case .success(let posts):
-                self?.posts = posts
+                self?.posts = posts ?? []
                 self?.tableView.reloadData()
             
             case .failure(let error):
@@ -51,11 +51,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 struct Post: Codable {
-    let userID, id: Int
+    let userID, ids: Int
     let title, body: String
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
-        case id, title, body
+        case ids, title, body
     }
 }

@@ -22,6 +22,6 @@ extension ErrorProtocol {
     }
 }
 
-public struct CustomErrorModel: ErrorProtocol {
+public struct ErrorModel: ErrorProtocol {
     
 }
