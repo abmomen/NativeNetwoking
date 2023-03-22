@@ -7,18 +7,16 @@
 
 import Foundation
 
-public typealias DefaultErrorModel = NetworkError<ErrorModel>
+public typealias ErrorModel = NetworkError<CustomErrorModel>
 
-public protocol GenericAPIClient {
-    static func startRequest<T: Decodable, E: Decodable>(with endPoint: EndPoint,
-                                                         decoder: JSONDecoder,
-                                                         completion: @escaping (Result<T?, NetworkError<E>>) -> Void)
+protocol GenericAPIClient {
+    static func startRequest<T: Decodable>(with endPoint: EndPoint, decoder: JSONDecoder,
+                                           completion: @escaping (Result<T, ErrorModel>) -> Void)
 }
 
-public extension GenericAPIClient {
-    static func startRequest<T: Decodable, E: Decodable>(with endPoint: EndPoint,
-                                                         decoder: JSONDecoder = JSONDecoder(),
-                                                         completion: @escaping (Result<T?, NetworkError<E>>) -> Void) {
+extension GenericAPIClient {
+    static func startRequest<T: Decodable>(with endPoint: EndPoint, decoder: JSONDecoder = JSONDecoder(),
+                                           completion: @escaping (Result<T, ErrorModel>) -> Void) {
         
         URLSession.shared.dataTask(with: endPoint.request) { data, response, error in
             if let error = error {
@@ -28,44 +26,42 @@ public extension GenericAPIClient {
                 return
             }
             
-            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
-                
+            guard let data = data else {
                 DispatchQueue.main.async {
-                    completion(.failure(.serverError(response.statusCode)))
+                    completion(.failure(.invalidResponse))
                 }
                 
                 return
             }
             
-            if let data = data {
+            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
+                
                 do {
-                    let decodedData = try decoder.decode(T.self, from: data)
-                    
-                    DispatchQueue.main.async {
-                        completion(.success(decodedData))
-                    }
-                    
-                    return
-                    
-                } catch {
-                    
-                    guard let errorData = try? decoder.decode(E.self, from: data) else {
-                        DispatchQueue.main.async {
-                            completion(.failure(.decodingError(error)))
-                        }
-                        return
-                    }
-                    
+                    let errorData = try decoder.decode(CustomErrorModel.self, from: data)
                     DispatchQueue.main.async {
                         completion(.failure(.customError(errorData)))
                     }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(.failure(.serverError(response.statusCode)))
+                    }
                 }
                 
-            } else {
+                return
+            }
+            
+            do {
+                
+                let decodedData = try decoder.decode(T.self, from: data)
+                
                 DispatchQueue.main.async {
-                    completion(.success(nil))
+                    completion(.success(decodedData))
                 }
                 
+            } catch {
+                DispatchQueue.main.async {
+                    completion(.failure(.decodingError(error)))
+                }
             }
         }
         .resume()
